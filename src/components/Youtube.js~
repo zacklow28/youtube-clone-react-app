@@ -8,28 +8,29 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const Youtube = ({ searchTerm, number, onFetchVideos }) => {
     const [videos, setVideos] = useState([]);
 
-    useEffect(() => {
-        const fetchVideos = async () => {
-            /*
-            Find all these in the api documentation. The GET request, and the parameters (with ? or &)
+    const fetchVideos = async () => {
+        /*
+        Find all these in the api documentation. The GET request, and the parameters (with ? or &)
 
-            REQUEST
-            /search means doing a search
+        REQUEST
+        /search means doing a search
 
-            PARAMS
-            ?part=snippet get the video details
-            &q={} is the search query
-            &type=video ensures on videos (no playlists, channels)
-            &key={} is the API_KEY
-            maxResults={} → Limits the number of results to avoid excess API usage
-            */
-            const response = await fetch(`${BASE_URL}/search?part=snippet&q=${searchTerm}
+        PARAMS
+        ?part=snippet get the video details
+        &q={} is the search query
+        &type=video ensures on videos (no playlists, channels)
+        &key={} is the API_KEY
+        maxResults={} → Limits the number of results to avoid excess API usage
+        */
+        const response = await fetch(`${BASE_URL}/search?part=snippet&q=${searchTerm}
                                         &type=video&key=${API_KEY}&maxResults=${number}`);
-            const data = await response.json();
-            setVideos(data.items);
-        }
+        const data = await response.json();
+        setVideos(data.items);
+    }
+
+    useEffect(() => {
         fetchVideos();
-    }, [searchTerm, number]);
+    }, [searchTerm, fetchVideos]);
 
     //everytime video array updates, pass the first video to parent.
     //Cannot do this in async function, will not immediately update, causing first video from prev search instead

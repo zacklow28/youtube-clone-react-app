@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper, TextField } from '@mui/material';
 import '../App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Searchbar = ({ onSearchSubmit }) => {
     const [searchTerm, setSearchTerm] = useState("");

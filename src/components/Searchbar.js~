@@ -4,7 +4,7 @@ import '../App.css';
 import { useState, useEffect } from 'react';
 
 const Searchbar = ({ onSearchSubmit }) => {
-    const [searchTerm, setSearchTerm] = useState({id:{kind: 'youtube#video', videoId: 'Yp60Cxrcqx8'}});
+    const [searchTerm, setSearchTerm] = useState("");
 
     return (
         <Paper className="searchbar" elevation={6}>
