@@ -23,7 +23,7 @@ const App = () => {
         <Grid className="app" container spacing={10}>
 
             <Grid item xs={12}>
-                <Grid container spacing={5} >
+                <Grid container mt={2} ml={3} mr={4} pb={10}>
                     <Grid item xs={12}>
                         <Searchbar onSearchSubmit={handleSearchSubmit}/>
                     </Grid>

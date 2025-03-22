@@ -1,0 +1,18 @@
+import React from 'react';
+import { Paper, TextField } from '@mui/material';
+import '../App.css';
+import { useState, useEffect } from 'react';
+
+const Searchbar = ({ onSearchSubmit }) => {
+    const [searchTerm, setSearchTerm] = useState({id:{kind: 'youtube#video', videoId: 'Yp60Cxrcqx8'}});
+
+    return (
+        <Paper className="searchbar" elevation={6}>
+            <TextField fullWidth label="Search..." value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            onKeyPress={(event) => event.key === 'Enter' ? onSearchSubmit(searchTerm) : null}/>
+        </Paper>
+    )
+}
+
+export default Searchbar;
